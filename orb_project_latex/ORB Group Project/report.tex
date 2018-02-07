@@ -1,0 +1,74 @@
+% Koma-Klasse für ein Buch:
+%  12pt Schriftgröße
+%  A4 Seitenformat
+%  Bibliography ins Inhaltzverzeichnis
+%  Trennlinie für die Kopfzeile
+%  kleine Überschriften (alternativ: normalheadings, bigheadings)
+%  zweiseitiger Druck (alternativ: oneside)
+%  Kapitel immer auf ungeraden Seiten beginnen
+%  fleqn: abgesetzte mathematische Formeln sind linksbündig
+%  "Anhang" wird vor die Kapitelüberschriften im Anhang gesetzt (chapterprefix hat den gleichen Effekt für normale Kapitel)
+%  BCORXmm reserviert X mm zusätzlichen Rand für die Bindung
+\documentclass[12pt,a4paper,bibtotoc,headsepline,smallheadings,twoside,openright,fleqn,appendixprefix,BCOR5mm]{scrbook}
+
+% \usepackage[ansinew]{inputenc} % Zeichenkodierung
+\usepackage[utf8]{inputenc} % UTF8 codierung
+\usepackage[T1]{fontenc} % Trennung von Wörtern mit Umlauten
+% \usepackage{eurofont} %Das Euro-Zeichen
+\usepackage{lmodern} % Latin Modern font benutzen (enhanced computer modern clone, serif)
+%\usepackage{tgpagella} % TeX Gyre Pagella font benutzen (palatino clone, serif)
+%\usepackage{tgtermes} % TeX Gyre Termes font bentzen (times clone, serif)
+%\usepackage[ngerman]{babel} % Dokumnt in deutsch inklusive Silbentrennung nach neuer deutscher Rechtschreibung
+\usepackage[USenglish]{babel} % Englische Sprachunterstützung (alternativ: USenglish)
+\usepackage{natbib} % Stil für Literaturverzeichnis
+\usepackage{amsmath} % verbesserte mathematische Umgebung
+\usepackage{amsfonts} % zusätzliche mathematische Zeichen
+\usepackage{amssymb} % zusätzliche mathematische Zeichen
+\usepackage{amsthm} % zusätzliche mathematische Zeichen
+\usepackage{exscale} % Anpassung mathematischer Symbole an die Schriftgröße
+\usepackage{amstext} % \text in mathematischer Umgebung
+\usepackage{array} % Tabellen
+\usepackage{rotating} % rotierte Tabellen und Bilder
+\usepackage[ruled, german]{algorithm2e} % Pseudocode
+\usepackage{verbatim} % Funktion zum Schreiben von unformatiertem Text
+\usepackage{float} % Ermöglicht das Erstellen von eigenen Float Umgebungen
+\usepackage[section]{placeins} % Verhindert das Wandern von floats in eine andere section
+\usepackage{color} % Farbiger Text
+\usepackage{graphicx} % Funktionen zum Einfügen von Bildern
+\usepackage{subfigure} % Anzeigen von Bildern aus mehreren Einzelbildern
+\usepackage{setspace} % Einstellen des Zeilenabstandes
+\usepackage[plainpages=false,pdfpagelabels=true,colorlinks=true,linkcolor=black,citecolor=black,bookmarksopen=true]{hyperref} % Verweise werden im PDF zu Hyperlinks
+\usepackage{scrpage2} % Koma für Kopfzeilen-Formatierung
+
+\bibliographystyle{dinat} % Literaturverzeichnis entsprechend DIN 1505 formatiert
+\renewcommand{\topfraction}{0.85} % Anteil einer Seite, die von Floats belegt sein darf (default 0.7)
+\renewcommand{\textfraction}{0.1} % Anteil einer Seite, die mindestens Text sein muss (default 0.2)
+\renewcommand{\floatpagefraction}{0.75} % Anteil einer Seite, die ein Float einnehmen darf, ohne auf die nächste Seite gesetzt zu werden (default 0.5)
+\singlespacing % Zeilenabstand setzen (alternativ: onehalfspacing, doublespacing)
+\definecolor{grey}{gray}{0.5}
+\newcommand{\todo}[1]{
+	% Die folgende Zeile kann auskommentiert werden, um die ToDo's zu entfernen
+	\textcolor{red}{[\textbf{ToDo}: \emph{#1}]}
+}
+\newcommand{\note}[1]{
+	% Die folgende Zeile kann auskommentiert werden, um die Notes zu entfernen
+	\textcolor{grey}{[\textbf{Anmerkung}: \emph{#1}]}
+}
+\newcommand{\argmax}{\operatornamewithlimits{argmax}}
+\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+\begin{document}
+
+\pagestyle{empty}
+\pagenumbering{alph}
+\input{text/titel} % Titelblatt
+
+\pagestyle{scrheadings}
+\frontmatter
+\tableofcontents % Inhaltsverzeichnis
+
+\mainmatter % der eigentliche Text folgt hier
+\input{text/model}
+\input{text/discussion}
+
+\end{document}
